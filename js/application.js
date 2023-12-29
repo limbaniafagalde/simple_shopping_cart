@@ -13,7 +13,7 @@ var sum = function (acc, x) { return acc + x; };
 
 var calculateTotalPrice = function(){
     var subtotals = [];
-
+    var totalPrice;
     $("tbody tr").each(function(index, element){
         var subtotal = calculateProductSubtotal(element);
         subtotals.push(subtotal);
@@ -21,7 +21,11 @@ var calculateTotalPrice = function(){
 
     console.log(subtotals);
 
-    var totalPrice = subtotals.reduce(sum);
+    if(subtotals.length !== 0){
+        totalPrice = subtotals.reduce(sum);
+    }else{
+        totalPrice = 0;
+    }
 
     $('#totalPrice').html(totalPrice);
 
